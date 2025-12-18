@@ -222,3 +222,25 @@ html, body { min-height: 100%; font-family: 'Montserrat', sans-serif; background
 @keyframes bounceIn { 0% { transform: scale(0.3); opacity: 0; } 50% { transform: scale(1.05); } 70% { transform: scale(0.9); } 100% { transform: scale(1); opacity: 1; } }
 @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 @keyframes moveBlob { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, -50px) scale(1.2); } }
+
+/* =========================================
+   NOVA SEÇÃO: MATCH PERFEITO & CRÉDITOS
+   ========================================= */
+
+/* MATCH CARD */
+.match-card { background: linear-gradient(135deg, #1e3c72, #2a5298); text-align: center; }
+.match-avatars { display: flex; justify-content: center; gap: 20px; margin-bottom: 15px; }
+.avatar { width: 60px; height: 60px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 2px solid #fff; }
+.match-score span { font-size: 48px; font-weight: 900; color: #B4F667; } /* Verde neon */
+.match-bar-bg { width: 100%; height: 8px; background: rgba(0,0,0,0.3); border-radius: 4px; margin: 15px 0; overflow: hidden; }
+.match-bar-fill { width: 0%; height: 100%; background: #B4F667; border-radius: 4px; transition: width 2s cubic-bezier(0.22, 1, 0.36, 1); }
+.match-text { font-size: 14px; font-style: italic; opacity: 0.9; margin-top: 10px; }
+
+/* CRÉDITOS DA MÚSICA */
+.credits-section { margin: 20px 24px; padding: 15px; border-radius: 8px; background-color: transparent; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; }
+.credits-header { display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; }
+.show-credits { color: var(--spotify-light-gray); font-size: 12px; font-weight: 500; }
+.credits-details { margin-top: 15px; animation: fadeIn 0.5s; }
+.credit-row { display: flex; flex-direction: column; margin-bottom: 12px; }
+.credit-row .role { font-size: 11px; color: var(--spotify-light-gray); margin-bottom: 2px; }
+.credit-row .names { font-size: 14px; font-weight: 500; }

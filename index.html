@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <audio id="audioPlayer" src="musica.mp3" preload="metadata"></audio>
+    <audio id="audioPlayer" preload="metadata"></audio>
 
     <div id="intro-screen" class="intro-overlay">
         <div class="intro-content">
@@ -30,12 +30,12 @@
 
         <div class="player-main-view">
             <div class="album-cover-container">
-                <img src="beijo.jpg" alt="Capa" class="album-cover">
+                <img src="beijo.jpg" alt="Capa" id="album-cover" class="album-cover">
             </div>
             <div class="track-info-container">
                 <div class="track-text">
-                    <h2 class="track-title">Feliz 1º ano</h2>
-                    <p class="artist-name">365 dias de nós</p>
+                    <h2 id="track-title" class="track-title">Feliz 1º ano</h2>
+                    <p id="artist-name" class="artist-name">365 dias de nós</p>
                 </div>
                 <i class="fas fa-heart like-button"></i>
             </div>
@@ -50,11 +50,15 @@
             </div>
             <div class="player-controls">
                 <i class="fas fa-random control-icon shuffle-icon"></i>
-                <i class="fas fa-step-backward control-icon jump-icon"></i>
+                
+                <i class="fas fa-step-backward control-icon jump-icon" onclick="prevSong()"></i>
+                
                 <div class="play-pause-btn" onclick="togglePlayPause()">
                     <i id="play-icon-main" class="fas fa-pause"></i>
                 </div>
-                <i class="fas fa-step-forward control-icon jump-icon"></i>
+                
+                <i class="fas fa-step-forward control-icon jump-icon" onclick="nextSong()"></i>
+                
                 <i class="fas fa-redo control-icon loop-icon active"></i>
             </div>
         </div>
@@ -126,6 +130,49 @@
                 <div class="mystery-arrow"><i class="fas fa-lock"></i></div>
             </div>
 
+            <div class="content-card match-card">
+                <h3 class="card-header-title">Nosso Match</h3>
+                <div class="match-container">
+                    <div class="match-avatars">
+                        <div class="avatar user1"><i class="fas fa-user"></i></div>
+                        <div class="avatar user2"><i class="fas fa-heart"></i></div>
+                    </div>
+                    <div class="match-score">
+                        <span id="match-percent">0%</span>
+                        <p>de compatibilidade</p>
+                    </div>
+                    <div class="match-bar-bg">
+                        <div id="match-fill" class="match-bar-fill"></div>
+                    </div>
+                    <p class="match-text">O algoritmo confirma: não existe par melhor.</p>
+                </div>
+            </div>
+
+            <div class="credits-section" onclick="toggleCredits()">
+                <div class="credits-header">
+                    <span>Créditos da Canção</span>
+                    <span class="show-credits">Exibir</span>
+                </div>
+                <div class="credits-details" style="display: none;">
+                    <div class="credit-row">
+                        <span class="role">Interpretado por</span>
+                        <span class="names">Nós Dois</span>
+                    </div>
+                    <div class="credit-row">
+                        <span class="role">Escrito por</span>
+                        <span class="names">Deus</span>
+                    </div>
+                    <div class="credit-row">
+                        <span class="role">Produzido com</span>
+                        <span class="names">Muito Amor, Paciência, Maturidade e Parceria</span>
+                    </div>
+                    <div class="credit-row">
+                        <span class="role">Fonte</span>
+                        <span class="names">Sentimentos Reais</span>
+                    </div>
+                </div>
+            </div>
+
             <div style="height: 120px;"></div>
         </div>
     </div>
@@ -149,7 +196,6 @@
     </div>
 
     <div id="wrapped-overlay" class="wrapped-overlay" style="display: none;">
-        
         <div class="story-bars">
             <div class="bar-bg"><div id="bar-1" class="bar-fill"></div></div>
             <div class="bar-bg"><div id="bar-2" class="bar-fill"></div></div>
