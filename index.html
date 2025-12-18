@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Willian & Veronica</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <audio id="audioPlayer" src="musica.mp3" preload="metadata"></audio>
+
+    <div id="intro-screen" class="intro-overlay">
+        <div class="intro-content">
+            <div class="spotify-logo-intro"><i class="fab fa-spotify"></i></div>
+            <h1>Olá, meu amor!</h1>
+            <p>Preparada para a surpresa e para mais um ano juntos?</p>
+            <button class="spotify-btn-large" onclick="startExperience()">Preparada!</button>
+        </div>
+    </div>
+
+    <div id="main-app" class="app-container" style="display: none;">
+        <div class="player-header">
+            <i class="fas fa-chevron-down icon-ghost"></i>
+            <span class="header-title">TOCANDO DA SUA PLAYLIST</span>
+            <i class="fas fa-ellipsis-h icon-ghost"></i>
+        </div>
+
+        <div class="player-main-view">
+            <div class="album-cover-container">
+                <img src="beijo.jpg" alt="Capa" class="album-cover">
+            </div>
+            <div class="track-info-container">
+                <div class="track-text">
+                    <h2 class="track-title">Feliz 1º ano</h2>
+                    <p class="artist-name">365 dias de nós</p>
+                </div>
+                <i class="fas fa-heart like-button"></i>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill" style="width: 0%;"></div>
+                </div>
+                <div class="time-codes">
+                    <span id="current-time">0:00</span>
+                    <span id="total-duration">--:--</span>
+                </div>
+            </div>
+            <div class="player-controls">
+                <i class="fas fa-random control-icon shuffle-icon"></i>
+                <i class="fas fa-step-backward control-icon jump-icon"></i>
+                <div class="play-pause-btn" onclick="togglePlayPause()">
+                    <i id="play-icon-main" class="fas fa-pause"></i>
+                </div>
+                <i class="fas fa-step-forward control-icon jump-icon"></i>
+                <i class="fas fa-redo control-icon loop-icon active"></i>
+            </div>
+        </div>
+
+        <div class="scrollable-content">
+            
+            <div class="content-card lyrics-card">
+                <h3 class="card-header-title">Letra</h3>
+                <div class="lyrics-text-container" id="lyrics-container">
+                    <p class="lyrics-content">
+                        Meu amor, feliz 1º ano!<br><br>
+                        Parece que foi ontem que a gente começou essa jornada, mas ao mesmo tempo, parece que te conheço de outras vidas.<br><br>
+                        Foi um ano de muitas lutas, adversidades, aprendizados e conquistas. Mas o mais importante é que nosso amor passou por tudo isso, e seguimos firme e juntos.<br><br>
+                        Obrigado por ser essa mulher incrível, por me apoiar e por fazer meus dias mais felizes (mesmo quando vc me incomoda). Você é minha melhor amiga e o amor da minha vida.<br><br>
+                        Que venham muitos e muitos mais anos pela frente. Eu te amo infinitamente.<br><br>
+                        "Meus sentimentos não podem ser reprimidos e preciso que me permita dizer-lhe que eu a admiro e amo ardentemente."<br> Mr. Darcy - Orgulho e Preconceito<br><br>
+                        Com todo amor do mundo,<br>Willian.
+                        <br><br><br>
+                    </p>
+                </div>
+                <div class="lyrics-footer">
+                    <button class="show-more-lyrics-btn" onclick="toggleLyrics()">MOSTRAR MAIS</button>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3 class="card-header-title">Sua Dose Diária de Amor</h3>
+                <div class="daily-mix-container" onclick="showReason()">
+                    <div class="mix-cover">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="mix-text">
+                        <h3>Motivos para te amar</h3>
+                        <p id="reason-text">Toque para descobrir um motivo...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card artist-bio-card">
+                <h3 class="card-header-title">Sobre os artistas</h3>
+                <div class="artist-image-header">
+                    <img src="maos.jpg" alt="Mãos" class="artist-header-img">
+                </div>
+                <div class="artist-bio-text">
+                    <h1>Willian e Veronica</h1>
+                    <div class="verified-badge"><i class="fas fa-check-circle"></i> Juntos desde 2025</div>
+                    <div class="stats-box">
+                        <p class="stats-label">Tempo total de conexão:</p>
+                        <div id="live-timer" class="timer-display">Calculando...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapped-banner" onclick="openWrapped()">
+                <div class="wrapped-text">
+                    <span class="wrapped-tag">#RETROSPECTIVA</span>
+                    <h3>Sua retrospectiva de amor 2025</h3>
+                    <p>Toque para relembrar</p>
+                </div>
+                <div class="wrapped-icon"><i class="fas fa-play-circle"></i></div>
+            </div>
+
+            <div class="content-card mystery-card" onclick="openTicket()">
+                <div class="mystery-icon"><i class="fas fa-gift"></i></div>
+                <div class="mystery-text">
+                    <h3>Presente Especial Bloqueado</h3>
+                    <p>Toque para desbloquear sua surpresa</p>
+                </div>
+                <div class="mystery-arrow"><i class="fas fa-lock"></i></div>
+            </div>
+
+            <div style="height: 120px;"></div>
+        </div>
+    </div>
+
+    <div id="ticket-modal" class="ticket-modal-overlay">
+        <div class="ticket-modal-content">
+            <div class="modal-header">
+                <h2>SURPRESA! 🎉</h2>
+            </div>
+            <div class="ticket-stub-large">
+                <div class="ticket-content-large">
+                    <span class="ticket-title-large">VALE UMA MASSAGEM + JANTAR ROMÂNTICO CASEIRO</span>
+                    <span class="ticket-sub-large">Válido para: Quando você quiser ❤️</span>
+                </div>
+                <div class="ticket-rip-large"></div>
+                <div class="barcode">|||||| |||| || ||||||</div>
+            </div>
+            <p class="modal-note">Tire um print para garantir seu prêmio!</p>
+            <button class="close-modal-btn" onclick="closeTicket()">AMEI! (FECHAR)</button>
+        </div>
+    </div>
+
+    <div id="wrapped-overlay" class="wrapped-overlay" style="display: none;">
+        
+        <div class="story-bars">
+            <div class="bar-bg"><div id="bar-1" class="bar-fill"></div></div>
+            <div class="bar-bg"><div id="bar-2" class="bar-fill"></div></div>
+            <div class="bar-bg"><div id="bar-3" class="bar-fill"></div></div>
+            <div class="bar-bg"><div id="bar-4" class="bar-fill"></div></div>
+            <div class="bar-bg"><div id="bar-5" class="bar-fill"></div></div>
+            <div class="bar-bg"><div id="bar-6" class="bar-fill"></div></div>
+            <div class="bar-bg"><div id="bar-7" class="bar-fill"></div></div>
+            <div class="bar-bg"><div id="bar-8" class="bar-fill"></div></div>
+            <div class="bar-bg"><div id="bar-9" class="bar-fill"></div></div>
+        </div>
+        <div class="close-wrapped" onclick="closeWrapped()"><i class="fas fa-times"></i></div>
+
+        <div class="story-slide slide-bg-anim" id="slide-1">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="slide-content center-content">
+                <h2 class="slide-title-big pop-in">Esse ano foi intenso...</h2>
+                <div class="big-number" id="total-hours" data-final-value="0">0</div>
+                <p class="slide-subtitle fade-up-delay">Horas ouvindo nosso amor tocar.</p>
+            </div>
+        </div>
+
+        <div class="story-slide bg-noise" id="slide-2">
+            <div class="kinetic-container">
+                <div class="kinetic-text k-left">VALE A PENA</div>
+                <div class="kinetic-text k-right">VALE A PENA</div>
+                <div class="kinetic-text highlight k-pop">RELEMBRAR</div>
+                <div class="kinetic-text k-left">VALE A PENA</div>
+                <div class="kinetic-text k-right">VALE A PENA</div>
+            </div>
+        </div>
+
+        <div class="story-slide slide-bg-orange" id="slide-3">
+            <div class="slide-content center-content photo-slide-container">
+                <img src="foto1.jpg" class="single-photo-wrapped photo-pop">
+                <p class="photo-caption caption-stamp">Top Hit #1</p>
+            </div>
+        </div>
+        <div class="story-slide slide-bg-green" id="slide-4">
+            <div class="slide-content center-content photo-slide-container">
+                <img src="foto2.jpg" class="single-photo-wrapped photo-pop">
+                <p class="photo-caption caption-stamp">Top Hit #2</p>
+            </div>
+        </div>
+        <div class="story-slide slide-bg-blue" id="slide-5">
+            <div class="slide-content center-content photo-slide-container">
+                <img src="foto3.jpg" class="single-photo-wrapped photo-pop">
+                <p class="photo-caption caption-stamp">Top Hit #3</p>
+            </div>
+        </div>
+        <div class="story-slide slide-bg-pink" id="slide-6">
+            <div class="slide-content center-content photo-slide-container">
+                <img src="foto4.jpg" class="single-photo-wrapped photo-pop">
+                <p class="photo-caption caption-stamp">Top Hit #4</p>
+            </div>
+        </div>
+        <div class="story-slide slide-bg-yellow" id="slide-7">
+            <div class="slide-content center-content photo-slide-container">
+                <img src="foto5.jpg" class="single-photo-wrapped photo-pop">
+                <p class="photo-caption caption-stamp">Top Hit #5</p>
+            </div>
+        </div>
+
+         <div class="story-slide tape-slide" id="slide-8">
+            <div class="tape-container">
+                <div class="tape-row">
+                    <div class="tape-content move-left">
+                        NOSSA LINHA DO TEMPO • NOSSA LINHA DO TEMPO • NOSSA LINHA DO TEMPO • NOSSA LINHA DO TEMPO •
+                    </div>
+                </div>
+                <div class="tape-row green">
+                    <div class="tape-content move-right">
+                        VAMOS RELEMBRAR? VAMOS RELEMBRAR? VAMOS RELEMBRAR? VAMOS RELEMBRAR?
+                    </div>
+                </div>
+                <div class="tape-row">
+                    <div class="tape-content move-left">
+                        JANEIRO A DEZEMBRO • JANEIRO A DEZEMBRO • JANEIRO A DEZEMBRO • JANEIRO A DEZEMBRO •
+                    </div>
+                </div>
+                <div class="tape-row pink">
+                    <div class="tape-content move-right">
+                        ❤️ MOMENTOS ÚNICOS ❤️ MOMENTOS ÚNICOS ❤️ MOMENTOS ÚNICOS ❤️ MOMENTOS ÚNICOS 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="story-slide slide-bg-dark" id="slide-9">
+            <div class="slide-content scroll-y" style="-webkit-overflow-scrolling: touch;">
+                <h2 class="slide-title-sticky slide-in-top">Nossa Linha do Tempo</h2>
+                <div class="timeline-container">
+                    
+                    <div class="timeline-item tl-anim"><div class="tl-date">01 Jan</div><div class="tl-content"><img src="inicio.jpg"><h3>O início de tudo</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">11 Jan</div><div class="tl-content"><img src="viagem.jpg"><h3>Primeira viagem juntos</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">31 Jan</div><div class="tl-content"><img src="jantar.jpg"><h3>Jantar romântico</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">9 Fev</div><div class="tl-content"><img src="segunda.jpg"><h3>Segunda viagem</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">08 Mar</div><div class="tl-content"><img src="diaMulher.jpg"><h3>Dia da Mulher</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">29 Mar</div><div class="tl-content"><img src="cinema.jpg"><h3>Cinema em casa</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">03 Mai</div><div class="tl-content"><img src="toledo.jpg"><h3>Primeira vez em Toledo</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">12 Jun</div><div class="tl-content"><img src="namorados.jpg"><h3>Primeiro Dia dos Namorados</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">28 Jun</div><div class="tl-content"><img src="junina.jpg"><h3>Festa Junina</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">11 Ago</div><div class="tl-content"><img src="casaNova.jpg"><h3>Morando Juntos</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">21 Out</div><div class="tl-content"><img src="aniversario.jpg"><h3>Rolê de Aniversário</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">20 Nov</div><div class="tl-content"><img src="piquenique.jpg"><h3>Piquenique no Lago</h3></div></div>
+                    <div class="timeline-item tl-anim"><div class="tl-date">06 Dez</div><div class="tl-content"><img src="role.jpg"><h3>Rolêzinho aleatório</h3></div></div>
+
+                    <div class="timeline-item future tl-anim">
+                        <div class="tl-date">O Futuro</div>
+                        <div class="tl-content future-content">
+                            <h3>E a história continua...</h3>
+                            <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.7;">Próximos capítulos em breve ❤️</p>
+                        </div>
+                    </div>
+                    
+                    <div style="height: 100px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tap-area left" onclick="prevSlide()"></div>
+        <div class="tap-area right" onclick="nextSlide()"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
