@@ -184,7 +184,6 @@ html, body { min-height: 100%; font-family: 'Montserrat', sans-serif; background
 .tl-content h3 { font-size: 1.2rem; font-weight: 700; }
 .timeline-item.future { opacity: 1 !important; }
 .timeline-item.future::before { background: #121212 !important; border: 2px dashed var(--wrapped-green); width: 20px; height: 20px; left: -31px; box-shadow: 0 0 10px var(--wrapped-green); }
-.timeline-item.future::after { content: '❤'; position: absolute; left: -26px; top: -2px; font-size: 10px; color: var(--wrapped-green); }
 .future-content { border: 2px dashed rgba(255,255,255,0.2); padding: 15px; border-radius: 12px; background: rgba(255,255,255,0.05); }
 
 .tap-area { position: absolute; top: 50px; bottom: 0; width: 30%; z-index: 10001; }
