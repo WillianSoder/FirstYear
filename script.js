@@ -171,7 +171,7 @@ const reasons = [
     "Seu cabelo cacheado.",
     "Sua boquinha linda.",
     "Sua determinação.",
-    "Você faz eu me sentir homem.",
+    "Você faz eu me sentir mais Homem.",
     "Seu cheirinho que fica na minha roupa.",
     "Como você me apoia em tudo.",
     "Nossos planos para o futuro.",
